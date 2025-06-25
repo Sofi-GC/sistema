@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lista de Alumnos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <h2>Lista de alumnos - Registro de asistencia</h2>
+    <div id="alumnos-container"></div>
+    <button onclick="guardarAsistencia()">Guardar asistencia</button>
+
+    <script>
+        const grupoId = localStorage.getItem('grupoSeleccionado');
+        if (!grupoId) {
+            alert('No se ha seleccionado grupo');
+            location.href = 'grupos.html';
+        }
+
+        let alumnos = [];
+
+        function cargarAlumnos() {
+            fetch(`php/get_alumnos.php?grupo_id=${grupoId}`)
+                .then(res => res.json())
+                .then(data => {
+                    alumnos = data;
+                    const container = document.getElementById('alumnos-container');
+                    container.innerHTML = '';
+                    data.forEach(alumno => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `
+                            <input type="checkbox" id="alumno_${alumno.id}" checked />
+                            <label for="alumno_${alumno.id}">${alumno.nombre} ${alumno.apellido} (${alumno.matricula})</label>
+                        `;
+                        container.appendChild(div);
+                    });
+                });
+        }
+
+        function guardarAsistencia() {
+            const fecha = new Date().toISOString().split('T')[0];
+            const asistencias = alumnos.map(alumno => {
+                const checkbox = document.getElementById(`alumno_${alumno.id}`);
+                return {
+                    alumno_id: alumno.id,
+                    presente: checkbox.checked ? 1 : 0,
+                    fecha: fecha
+                };
+            });
+
+            fetch('php/update_asistencia.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({asistencias})
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.mensaje);
+            });
+        }
+
+        cargarAlumnos();
+    </script>
+</body>
+</html>

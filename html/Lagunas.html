@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Lenguaje de Interfaz - Ing. Lagunas</title>
+  <link rel="stylesheet" href="../css/lagunas.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #402F4E, #D7AC71);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .btn-regresar {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #D7AC71;
+      color: #402F4E;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .btn-regresar:hover {
+      background-color: #f0d18c;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #402F4E;
+      margin-bottom: 20px;
+    }
+
+    .grid-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-galeria img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .grid-galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .tarjetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .tarjeta {
+      flex: 1;
+      min-width: 280px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    pre {
+      background: #eee;
+      padding: 20px;
+      overflow-x: auto;
+      border-left: 4px solid #402F4E;
+      border-radius: 8px;
+    }
+
+    .icono {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+      color: #D7AC71;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #402F4E;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="inicio.html" class="btn-regresar">← Regresar</a>
+    <h1>Proyecto Integrador - Lenguaje de Interfaz</h1>
+    <p>Con el Ing. Lagunas</p>
+  </header>
+
+  <section id="introduccion">
+    <h2>Objetivo del Proyecto</h2>
+    <p>
+      Este proyecto tiene como objetivo crear una interfaz web que permita controlar tres objetos físicos mediante una placa ESP32.
+      La comunicación entre la interfaz y el microcontrolador se realiza a través de un protocolo como Wi-Fi. Se busca integrar habilidades
+      de diseño de interfaz, programación web y comunicación con hardware de forma intuitiva, funcional y visualmente atractiva.
+    </p>
+  </section>
+
+  <section id="componentes">
+    <h2>Componentes Utilizados</h2>
+    <div class="tarjetas">
+      <div class="tarjeta">
+        <span class="icono">💡</span>
+        <h3>ESP32</h3>
+        <p>Microcontrolador central que recibe comandos y controla los dispositivos físicos.</p>
+      </div>
+      <div class="tarjeta">
+        <span class="icono">🖥️</span>
+        <h3>Interfaz Web</h3>
+        <p>Desarrollada con HTML, CSS y JS para que el usuario controle dispositivos desde el navegador.</p>
+      </div>
+      <div class="tarjeta">
+        <span class="icono">🌐</span>
+        <h3>WiFi</h3>
+        <p>Permite comunicación inalámbrica entre la interfaz web y el ESP32.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería del Proyecto</h2>
+    <div class="grid-galeria">
+      <img src="../media/esp32.jpg" alt="Circuito ESP32">
+      <img src="../media/interfaz_ui.png" alt="Diseño de interfaz">
+      <img src="../media/montaje.jpg" alt="Montaje final">
+      <img src="../media/codigo_pantalla.jpg" alt="Pantalla con código">
+      <img src="../media/dispositivo_encendido.jpg" alt="Dispositivo encendido">
+    </div>
+  </section>
+
+  <section id="video">
+    <h2>Demostración en Video</h2>
+    <video controls>
+      <source src="../media/video_proyecto.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </section>
+
+  <section id="detalles">
+    <h2>¿Cómo Funciona?</h2>
+    <div class="tarjetas">
+      <div class="tarjeta">
+        <h3>Diseño de Interfaz</h3>
+        <p>Desarrollada en HTML, CSS y JavaScript. Permite al usuario encender o apagar dispositivos de forma visual y simple.</p>
+      </div>
+      <div class="tarjeta">
+        <h3>ESP32</h3>
+        <p>El microcontrolador ESP32 se conecta a la red local y escucha comandos que se envían desde la interfaz web.</p>
+      </div>
+      <div class="tarjeta">
+        <h3>Protocolo Wi-Fi</h3>
+        <p>La interfaz utiliza peticiones HTTP (o WebSockets) para comunicarse con el servidor alojado en el ESP32.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo">
+    <h2>Fragmento de Código</h2>
+    <pre><code>// JavaScript para encender un dispositivo
+fetch('http://192.168.1.10/control?device=1&state=on');
+
+// Código ESP32
+void setup() {
+  pinMode(2, OUTPUT);
+  WiFi.begin(ssid, password);
+}
+    </code></pre>
+  </section>
+
+  <section id="reflexion">
+    <h2>Aprendizajes Clave</h2>
+    <p>
+      Este trabajo permitió conectar conceptos técnicos y creativos. Aprendimos a integrar interfaces visuales con sistemas electrónicos reales,
+      comunicándonos con la ESP32 desde una interfaz web amigable. Fue una experiencia enriquecedora que conecta diseño, código y tecnología.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Proyecto realizado por "Equipo Umizumi" para la materia de Lenguaje de Interfaz</p>
+  </footer>
+
+</body>
+</html>
